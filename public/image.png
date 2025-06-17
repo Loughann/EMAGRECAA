@@ -1,0 +1,674 @@
+```typescriptreact file="app/page.tsx"
+[v0-no-op-code-block-prefix]"use client" // Adicionado para permitir o uso de hooks e framer-motion
+
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Check, ShieldCheck, Gift, X } from 'lucide-react' // Importar o ícone Gift
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import RecipeSlider from "@/app/components/recipe-slider"
+import TestimonialCarousel from "@/app/components/testimonial-carousel" // Importar o novo componente
+import { motion } from "framer-motion" // Importar motion
+
+export default function LandingPage() {
+  const recipeImages1 = [
+    "/placeholder.svg?height=200&width=300",
+    "/placeholder.svg?height=200&width=300",
+    "/placeholder.svg?height=200&width=300",
+  ]
+  const recipeImages2 = [
+    "/placeholder.svg?height=200&width=300",
+    "/placeholder.svg?height=200&width=300",
+    "/placeholder.svg?height=200&width=300",
+  ]
+
+  // Dados para o carrossel de depoimentos
+  const testimonialsData = [
+    { image: "/placeholder.svg?height=400&width=400", weight: "-13kg", time: "em 3 meses" },
+    { image: "/placeholder.svg?height=400&width=400", weight: "-8kg", time: "em 2 meses" },
+    { image: "/placeholder.svg?height=400&width=400", weight: "-10kg", time: "em 3 meses" },
+    { image: "/placeholder.svg?height=400&width=400", weight: "-15kg", time: "em 4 meses" },
+    { image: "/placeholder.svg?height=400&width=400", weight: "-7kg", time: "em 2 meses" },
+    { image: "/placeholder.svg?height=400&width=400", weight: "-11kg", time: "em 3 meses" },
+    { image: "/placeholder.svg?height=400&width=400", weight: "-9kg", time: "em 2.5 meses" },
+  ]
+
+  // Variantes de animação para um efeito de fade-in e slide-up
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+        staggerChildren: 0.2, // Para animar itens filhos em sequência
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  }
+
+  return (
+    <div className="flex min-h-screen flex-col bg-[#f5f3ee]">
+      <main className="flex-1 px-4 py-8 md:py-12 max-w-md mx-auto overflow-hidden">
+        {/* Hero Section */}
+        <motion.div
+          className="text-center mb-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          <motion.h1 className="text-[#333333] text-3xl font-bold mb-2" variants={itemVariants}>
+            Emagreça até <span className="text-[#FF9D00] block text-4xl font-extrabold my-1">7KG EM 21 DIAS</span>
+            comendo tudo que gosta!
+          </motion.h1>
+          <div className="h-[3px] w-32 bg-[#FF9D00] mx-auto mt-2 mb-4"></div>
+        </motion.div>
+        {/* Device Mockups - Replaced with new image */}
+        <motion.div
+          className="relative h-[400px] w-full mx-auto max-w-full mb-8" // Adjusted max-width to max-w-full
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          <motion.div variants={itemVariants} className="relative w-full h-full">
+            <Image
+              src="/design-sem-nome-35.png"
+              alt="E-books de Receitas Fitness"
+              fill
+              className="object-contain" // Use object-contain to fit the entire image
+            />
+          </motion.div>
+        </motion.div>
+        {/* Description */}
+        <motion.div
+          className="text-center mb-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          <motion.p className="text-[#333333] text-lg mb-4" variants={itemVariants}>
+            Chega de dietas malucas, remédios milagrosos e consultas caras! A sua{" "}
+            <span className="font-bold">reeducação alimentar</span> começa com o guia{" "}
+            <span className="font-bold">Desafio Zero</span>.
+          </motion.p>
+          <motion.p className="text-[#555555]" variants={itemVariants}>
+            <span className="font-medium">+150 receitas fitness</span> sem açúcar, glúten e lactose para você emagrecer
+            sem abrir mão do prazer.
+          </motion.p>
+        </motion.div>
+        {/* CTA Button */}
+        <motion.div
+          className="text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          <motion.div variants={itemVariants}>
+            <Button className="bg-[#27AE60] hover:bg-[#219653] text-white font-bold text-lg py-6 rounded-full px-10 max-w-full animate-pulse-custom">
+              Eu Quero Começar Agora!
+            </Button>
+          </motion.div>
+          <motion.div className="flex justify-center items-center gap-2 mt-2" variants={itemVariants}>
+            <ShieldCheck className="h-4 w-4 text-[#555555]" />
+            <p className="text-sm text-[#555555]">Pagamento 100% seguro</p>
+          </motion.div>
+        </motion.div>
+        {/* Pain Points */}
+        <motion.div
+          className="mt-12 bg-white p-5 rounded-lg shadow-sm"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          <motion.h2 className="text-center font-bold text-[#333333] text-xl mb-4" variants={itemVariants}>
+            Você se identifica com isso?
+          </motion.h2>
+          <div className="space-y-3">
+            <motion.div className="flex items-start" variants={itemVariants}>
+              <Check className="h-5 w-5 text-[#FF9D00] mr-2 flex-shrink-0 mt-1" />
+              <p className="text-[#555555]">Tenta emagrecer, mas sempre cai na tentação do doce?</p>
+            </motion.div>
+            <motion.div className="flex items-start" variants={itemVariants}>
+              <Check className="h-5 w-5 text-[#FF9D00] mr-2 flex-shrink-0 mt-1" />
+              <p className="text-[#555555]">Sente culpa toda vez que come uma sobremesa?</p>
+            </motion.div>
+            <motion.div className="flex items-start" variants={itemVariants}>
+              <Check className="h-5 w-5 text-[#FF9D00] mr-2 flex-shrink-0 mt-1" />
+              <p className="text-[#555555]">Já tentou várias dietas mas sempre desiste por não poder comer doces?</p>
+            </motion.div>
+          </div>
+        </motion.div>
+        {/* Emotional Pain Section */}
+        <motion.div
+          className="mt-12 bg-white p-5 rounded-lg shadow-sm text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          <motion.h2 className="text-[#333333] text-2xl font-bold mb-4" variants={itemVariants}>
+            Cansada de dietas que te deixam <span className="text-[#FF9D00]">frustrada e culpada</span>?
+          </motion.h2>
+          <motion.p className="text-[#555555] text-lg mb-6" variants={itemVariants}>
+            Você se sente presa em um ciclo de privação e arrependimento? Sonha em comer o que ama sem culpa e ver
+            resultados?
+          </motion.p>
+          <motion.p className="text-[#333333] text-xl font-bold mb-6" variants={itemVariants}>
+            Chega de se privar! Emagreça com prazer e liberdade.
+          </motion.p>
+          <motion.div variants={itemVariants}>
+            <Button className="bg-[#27AE60] hover:bg-[#219653] text-white font-bold text-lg py-6 rounded-full px-10 max-w-full animate-pulse-custom">
+              Transforme sua relação com a comida!
+            </Button>
+          </motion.div>
+        </motion.div>
+        {/* Features Section */}
+        <motion.div
+          className="mt-8 space-y-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          <motion.h2 className="text-center font-bold text-[#333333] text-xl" variants={itemVariants}>
+            Por que nossas receitas são diferentes?
+          </motion.h2>
+
+          <motion.div className="bg-white p-4 rounded-lg shadow-sm" variants={itemVariants}>
+            <h3 className="font-bold text-[#333333] mb-2 flex items-center">
+              <span className="bg-[#FF9D00] text-white w-6 h-6 rounded-full flex items-center justify-center mr-2 animate-pulse-custom">
+                1
+              </span>
+              Rápidas e fáceis
+            </h3>
+            <p className="text-[#555555]">
+              Receitas prontas em menos de 15 minutos, perfeitas para sua rotina agitada.
+            </p>
+          </motion.div>
+
+          <motion.div className="bg-white p-4 rounded-lg shadow-sm" variants={itemVariants}>
+            <h3 className="font-bold text-[#333333] mb-2 flex items-center">
+              <span className="bg-[#FF9D00] text-white w-6 h-6 rounded-full flex items-center justify-center mr-2 animate-pulse-custom">
+                2
+              </span>
+              Sabor original
+            </h3>
+            <p className="text-[#555555]">
+              Sobremesas que realmente satisfazem sua vontade de doce, sem gosto de "dieta".
+            </p>
+          </motion.div>
+
+          <motion.div className="bg-white p-4 rounded-lg shadow-sm" variants={itemVariants}>
+            <h3 className="font-bold text-[#333333] mb-2 flex items-center">
+              <span className="bg-[#FF9D00] text-white w-6 h-6 rounded-full flex items-center justify-center mr-2 animate-pulse-custom">
+                3
+              </span>
+              Ingredientes acessíveis
+            </h3>
+            <p className="text-[#555555]">Encontre tudo facilmente no supermercado, sem itens caros ou difíceis.</p>
+          </motion.div>
+
+          <motion.div className="bg-white p-4 rounded-lg shadow-sm" variants={itemVariants}>
+            <h3 className="font-bold text-[#333333] mb-2 flex items-center">
+              <span className="bg-[#FF9D00] text-white w-6 h-6 rounded-full flex items-center justify-center mr-2 animate-pulse-custom">
+                4
+              </span>
+              Resultado real
+            </h3>
+            <p className="text-[#555555]">
+              Comprovado por centenas de mulheres que emagreceram sem abrir mão dos doces.
+            </p>
+          </motion.div>
+        </motion.div>
+        {/* Bonus Section */}
+        <motion.div
+          className="mt-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          <motion.h2
+            className="text-center font-bold text-3xl mb-6 flex items-center justify-center gap-2"
+            variants={itemVariants}
+          >
+            <Gift className="h-8 w-8 text-[#FF9D00]" /> {/* Ícone de presente */}
+            <span className="text-[#FF9D00]">Bônus Exclusivos</span>
+          </motion.h2>
+
+          <motion.div className="bg-white p-4 rounded-lg shadow-sm mb-4" variants={itemVariants}>
+            <div className="flex items-center">
+              <div className="w-16 h-16 relative mr-3 flex-shrink-0">
+                <Image src="/placeholder.svg" alt="Plano de 7 Dias" fill className="object-contain" />
+              </div>
+              <div>
+                <div className="inline-block bg-[#FF9D00] text-white text-xs font-bold px-2 py-1 rounded mb-1 animate-pulse-custom">
+                  BÔNUS 1
+                </div>
+                <h3 className="font-bold text-[#333333]">Plano de 7 Dias com Cardápio Doce</h3>
+                <p className="text-[#555555] text-sm">Cardápio completo para perder até 2kg em uma semana!</p>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div className="bg-white p-4 rounded-lg shadow-sm mb-4" variants={itemVariants}>
+            <div className="flex items-center">
+              <div className="w-16 h-16 relative mr-3 flex-shrink-0">
+                <Image src="/placeholder.svg" alt="Checklist de Ingredientes" fill className="object-contain" />
+              </div>
+              <div>
+                <div className="inline-block bg-[#FF9D00] text-white text-xs font-bold px-2 py-1 rounded mb-1 animate-pulse-custom">
+                  BÔNUS 2
+                </div>
+                <h3 className="font-bold text-[#333333]">Checklist de Ingredientes Saudáveis</h3>
+                <p className="text-[#555555] text-sm">Lista completa para fazer suas compras sem erro!</p>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div className="bg-white p-4 rounded-lg shadow-sm" variants={itemVariants}>
+            <div className="flex items-center">
+              <div className="w-16 h-16 relative mr-3 flex-shrink-0">
+                <Image src="/placeholder.svg" alt="Mini Guia" fill className="object-contain" />
+              </div>
+              <div>
+                <div className="inline-block bg-[#FF9D00] text-white text-xs font-bold px-2 py-1 rounded mb-1 animate-pulse-custom">
+                  BÔNUS 3
+                </div>
+                <h3 className="font-bold text-[#333333]">Mini Guia de Substituições</h3>
+                <p className="text-[#555555] text-sm">Adapte qualquer receita para a versão fit facilmente!</p>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+        {/* New Recipe Section */}
+        <motion.div
+          className="mt-12 text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          <motion.h2 className="text-[#333333] text-3xl font-bold mb-6" variants={itemVariants}>
+            São mais de <span className="text-[#FF9D00]">400 receitas</span> zero açúcar e zero glúten!
+          </motion.h2>
+          <motion.div className="space-y-8" variants={itemVariants}>
+            <RecipeSlider images={recipeImages1} />
+            <RecipeSlider images={recipeImages2} />
+          </motion.div>
+        </motion.div>
+        {/* Testimonials - Before and After */}
+        <motion.div
+          className="mt-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          <motion.p className="text-center text-[#999999] uppercase font-medium mb-1" variants={itemVariants}>
+            DEPOIMENTOS
+          </motion.p>
+          <motion.h2 className="text-center font-bold text-[#333333] text-2xl mb-2" variants={itemVariants}>
+            Nossos clientes que tiveram <span className="text-[#FF9D00] block">suas vidas transformadas!</span>
+          </motion.h2>
+
+          <motion.div className="mt-6 relative" variants={itemVariants}>
+            {/* Usar o novo componente TestimonialCarousel */}
+            <TestimonialCarousel testimonials={testimonialsData} />
+          </motion.div>
+
+          <motion.div
+            className="text-center mt-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={containerVariants}
+          >
+            <motion.div variants={itemVariants}>
+              <Button className="bg-[#27AE60] hover:bg-[#219653] text-white font-bold text-lg py-6 rounded-full px-10 max-w-full animate-pulse-custom">
+                Quero ver mais depoimentos!
+              </Button>
+            </motion.div>
+          </motion.div>
+
+          <div className="mt-8 space-y-4">
+            <motion.div className="bg-white p-4 rounded-lg shadow-sm" variants={itemVariants}>
+              <div className="flex items-center mb-2">
+                <div className="w-12 h-12 rounded-full bg-gray-200 mr-3"></div>
+                <div>
+                  <p className="font-bold text-[#333333]">Mariana, 32</p>
+                  <p className="text-[#FF9D00] text-sm font-medium">-8kg em 3 meses</p>
+                </div>
+              </div>
+              <p className="text-[#555555]">
+                "Perdi 8kg sem sentir que estava de dieta! Os brigadeiros de batata doce são incríveis!"
+              </p>
+            </motion.div>
+
+            <motion.div className="bg-white p-4 rounded-lg shadow-sm" variants={itemVariants}>
+              <div className="flex items-center mb-2">
+                <div className="w-12 h-12 rounded-full bg-gray-200 mr-3"></div>
+                <div>
+                  <p className="font-bold text-[#333333]">Carla, 41</p>
+                  <p className="text-[#FF9D00] text-sm font-medium">-12kg em 4 meses</p>
+                </div>
+              </div>
+              <p className="text-[#555555]">
+                "Minha nutricionista ficou impressionada com meus resultados. Finalmente posso comer doces sem culpa!"
+              </p>
+            </motion.div>
+
+            <motion.div className="bg-white p-4 rounded-lg shadow-sm" variants={itemVariants}>
+              <div className="flex items-center mb-2">
+                <div className="w-12 h-12 rounded-full bg-gray-200 mr-3"></div>
+                <div>
+                  <p className="font-bold text-[#333333]">Juliana, 28</p>
+                  <p className="text-[#FF9D00] text-sm font-medium">-6kg em 2 meses</p>
+                </div>
+              </div>
+              <p className="text-[#555555]">
+                "Meu marido nem percebe que são receitas fit! Já fiz o bolo de chocolate 5 vezes e é um sucesso!"
+              </p>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+        {/* About Author */}
+        <motion.div
+          className="mt-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          <motion.h2 className="text-center font-bold text-[#333333] text-xl mb-6" variants={itemVariants}>
+            Conheça a Nutri Paula
+          </motion.h2>
+
+          <motion.div className="bg-white p-4 rounded-lg shadow-sm" variants={itemVariants}>
+            <div className="flex flex-col items-center mb-4">
+              <div className="relative w-[300px] h-[200px] mx-auto mb-3 overflow-hidden rounded-lg shadow-md">
+                <Image
+                  src="/placeholder.svg"
+                  alt="Nutri Paula"
+                  width={300}
+                  height={200}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="font-bold text-[#333333]">Nutri Paula</h3>
+              <p className="text-[#FF9D00] text-sm font-medium">Especialista em Nutrição Funcional</p>
+            </div>
+            <p className="text-[#555555] text-center mb-3">
+              Nutricionista apaixonada por doces saudáveis. Já ajudou mais de 900 mulheres a emagrecer com prazer.
+            </p>
+            <p className="text-[#555555] text-center">
+              Paula desenvolveu este método após anos de frustração vendo suas pacientes desistirem das dietas por não
+              poderem comer doces. Hoje, sua missão é mostrar que é possível emagrecer sem abrir mão do prazer.
+            </p>
+          </motion.div>
+        </motion.div>
+        {/* Pricing Section - Replaced with new image */}
+        <motion.div
+          className="mt-12 text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          <motion.h2 className="text-[#333333] text-3xl font-bold mb-2" variants={itemVariants}>
+            Leve agora
+            <span className="text-[#FF9D00] block text-3xl font-extrabold">com condições únicas!</span>
+          </motion.h2>
+
+          {/* Device Mockups in Pricing Section - Replaced with new image */}
+          <motion.div
+            className="relative h-[400px] w-full mx-auto max-w-full my-8" // Adjusted max-width to max-w-full
+            variants={containerVariants}
+          >
+            <motion.div variants={itemVariants} className="relative w-full h-full">
+              <Image
+                src="/design-sem-nome-35.png"
+                alt="E-books de Receitas Fitness"
+                fill
+                className="object-contain" // Use object-contain to fit the entire image
+              />
+            </motion.div>
+          </motion.div>
+
+          <motion.p className="text-center font-medium text-[#27AE60] text-xl mb-4" variants={itemVariants}>
+            Você levará tudo por:
+          </motion.p>
+
+          <motion.div
+            className="bg-[#E53935] text-white py-2 rounded-md text-center mb-4 animate-pulse-custom inline-block px-6"
+            variants={itemVariants}
+          >
+            <p className="flex items-center justify-center">
+              <span className="mr-1">🔥</span> Preço válido até {new Date().toLocaleDateString("pt-BR")}
+            </p>
+          </motion.div>
+
+          <motion.div className="text-center mb-6" variants={itemVariants}>
+            <p className="text-[#777777] line-through mb-1">R$ 59,90</p>
+            <motion.p className="text-[#FF9D00] text-5xl font-bold mb-1 animate-pulse-custom" variants={itemVariants}>
+              R$12,90
+            </motion.p>
+            <p className="text-[#555555]">ou 2x de R$6,79</p>
+          </motion.div>
+
+          <div className="space-y-3 mb-8">
+            <motion.div className="flex items-start" variants={itemVariants}>
+              <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-1" />
+              <p className="text-[#555555]">4 e-books completos com mais de 400 receitas</p>
+            </motion.div>
+            <motion.div className="flex items-start" variants={itemVariants}>
+              <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-1" />
+              <p className="text-[#555555]">Acesso imediato</p>
+            </motion.div>
+            <motion.div className="flex items-start" variants={itemVariants}>
+              <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-1" />
+              <p className="text-[#555555]">Comunidade VIP de emagrecimento</p>
+            </motion.div>
+            <motion.div className="flex items-start" variants={itemVariants}>
+              <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-1" />
+              <p className="text-[#555555]">Suporte exclusivo individual</p>
+            </motion.div>
+            <motion.div className="flex items-start" variants={itemVariants}>
+              <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-1" />
+              <p className="text-[#555555]">Garantia incondicional de 7 dias</p>
+            </motion.div>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Button className="bg-[#27AE60] hover:bg-[#219653] text-white font-bold text-lg py-6 rounded-full px-10 max-w-full animate-pulse-custom">
+              Quero comprar agora!
+            </Button>
+          </motion.div>
+          <motion.p className="text-center text-sm text-[#555555]" variants={itemVariants}>
+            Válido por tempo limitado!
+          </motion.p>
+        </motion.div>
+        {/* Guarantee */}
+        <motion.div
+          className="bg-white p-4 rounded-lg shadow-sm"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          <motion.div className="flex items-center" variants={itemVariants}>
+            <div className="w-16 h-16 relative mr-3 flex-shrink-0 flex items-center justify-center">
+              <ShieldCheck className="h-12 w-12 text-[#27AE60]" /> {/* Selo de verificado */}
+            </div>
+            <div>
+              <h3 className="font-bold text-[#333333]">7 Dias de Garantia Incondicional</h3>
+              <p className="text-[#555555] text-sm">
+                Se você não ficar satisfeita por qualquer motivo, devolvemos 100% do seu dinheiro. Sem perguntas!
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+        {/* FAQ Section */}
+        <motion.div
+          className="mt-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          <motion.h2 className="text-center font-bold text-[#333333] text-xl mb-6" variants={itemVariants}>
+            Perguntas Frequentes
+          </motion.h2>
+
+          <motion.div className="bg-white rounded-lg shadow-sm" variants={itemVariants}>
+            <Accordion type="single" collapsible className="w-full [&>div:last-child]:border-b-0">
+              <AccordionItem value="item-1" className="border-gray-200">
+                <AccordionTrigger className="px-4 py-3 text-[#333333] font-bold hover:no-underline">
+                  É digital ou físico?
+                </AccordionTrigger>
+                <AccordionContent className="px-4 pb-3 text-[#555555]">
+                  O e-book é 100% digital, em formato PDF. Você receberá o acesso imediatamente após a confirmação do
+                  pagamento, diretamente no seu e-mail. Pode ler no celular, tablet ou computador.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2" className="border-gray-200">
+                <AccordionTrigger className="px-4 py-3 text-[#333333] font-bold hover:no-underline">
+                  Serve para diabéticos?
+                </AccordionTrigger>
+                <AccordionContent className="px-4 pb-3 text-[#555555]">
+                  Sim! Todas as receitas são sem açúcar refinado e utilizam adoçantes naturais em pequenas quantidades.
+                  No entanto, sempre consulte seu médico antes de fazer qualquer mudança na sua alimentação.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3" className="border-gray-200">
+                <AccordionTrigger className="px-4 py-3 text-[#333333] font-bold hover:no-underline">
+                  Funciona mesmo para quem não sabe cozinhar?
+                </AccordionTrigger>
+                <AccordionContent className="px-4 pb-3 text-[#555555]">
+                  Absolutamente! As receitas foram desenvolvidas pensando em pessoas sem experiência na cozinha. São
+                  simples, rápidas e com instruções passo a passo detalhadas.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-4">
+                <AccordionTrigger className="px-4 py-3 text-[#333333] font-bold hover:no-underline">
+                  Como recebo o material?
+                </AccordionTrigger>
+                <AccordionContent className="px-4 pb-3 text-[#555555]">
+                  Após a confirmação do pagamento, você receberá um e-mail com o link para download do e-book e todos os
+                  bônus. O acesso é imediato e você pode baixar em qualquer dispositivo.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </motion.div>
+        </motion.div>
+        {/* Final CTA */}
+        <motion.div
+          className="mt-12 text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          <motion.h2 className="text-[#333333] font-bold text-2xl mb-4" variants={itemVariants}>
+            Pronta para transformar sua alimentação?
+          </motion.h2>
+            <motion.div
+              className="mt-8 space-y-6 text-left"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={containerVariants}
+            >
+              {/* Não Fazer Nada Section */}
+              <motion.div className="bg-red-50 p-6 rounded-lg shadow-sm" variants={itemVariants}>
+                <h3 className="text-red-500 text-xl font-bold mb-4 flex items-center gap-2">
+                  <X className="h-6 w-6" /> Não Fazer Nada
+                </h3>
+                <ul className="space-y-3 text-[#555555]">
+                  <li className="flex items-start">
+                    <X className="h-5 w-5 text-red-500 mr-2 flex-shrink-0 mt-1" />
+                    Continuar lutando com dietas restritivas
+                  </li>
+                  <li className="flex items-start">
+                    <X className="h-5 w-5 text-red-500 mr-2 flex-shrink-0 mt-1" />
+                    Manter a frustração com o efeito sanfona
+                  </li>
+                  <li className="flex items-start">
+                    <X className="h-5 w-5 text-red-500 mr-2 flex-shrink-0 mt-1" />
+                    Seguir privando-se das comidas que ama
+                  </li>
+                  <li className="flex items-start">
+                    <X className="h-5 w-5 text-red-500 mr-2 flex-shrink-0 mt-1" />
+                    Permanecer insatisfeito com sua imagem
+                  </li>
+                  <li className="flex items-start">
+                    <X className="h-5 w-5 text-red-500 mr-2 flex-shrink-0 mt-1" />
+                    Adiar sua transformação mais uma vez
+                  </li>
+                </ul>
+              </motion.div>
+
+              {/* Começar Agora Section */}
+              <motion.div className="bg-green-50 p-6 rounded-lg shadow-sm" variants={itemVariants}>
+                <h3 className="text-green-600 text-xl font-bold mb-4 flex items-center gap-2">
+                  <Check className="h-6 w-6" /> Começar Agora
+                </h3>
+                <ul className="space-y-3 text-[#555555]">
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-1" />
+                    Acesso imediato a mais de 400 receitas
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-1" />
+                    Transformação sem abrir mão do prazer
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-1" />
+                    Suporte VIP para tirar todas as dúvidas
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-1" />
+                    Bônus exclusivos para acelerar resultados
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-1" />
+                    Garantia incondicional de 7 dias
+                  </li>
+                </ul>
+              </motion.div>
+            </motion.div>
+          <motion.div variants={itemVariants}>
+            <Button className="bg-[#27AE60] hover:bg-[#219653] text-white font-bold text-lg py-6 rounded-full px-10 max-w-full animate-pulse-custom">
+              Eu Quero Começar Agora!
+            </Button>
+          </motion.div>
+          <motion.p className="mt-4 text-sm text-[#555555]" variants={itemVariants}>
+            Acesso imediato após a confirmação do pagamento
+          </motion.p>
+        </motion.div>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-[#333333] text-white py-6 px-4 text-center text-sm mt-12">
+        <div className="mt-4">
+          <a href="#" className="text-gray-400 hover:text-white mr-4">
+            Política de Privacidade
+          </a>
+          <a href="#" className="text-gray-400 hover:text-white">
+            Termos de Uso
+          </a>
+        </div>
+        <p className="mt-4">© {new Date().getFullYear()} Nutri Paula. Todos os direitos reservados.</p>
+      </footer>
+    </div>
+  )
+}
