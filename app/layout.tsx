@@ -4,9 +4,9 @@ import Script from "next/script" // Import Script
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Receitas Fitness | Emagreça até 7kg em 21 dias",
+  title: "Emagreça até 9kg em 21 dias",
   description:
-    "Emagreça até 7kg em 21 dias comendo tudo que gosta com +150 receitas fitness sem açúcar, glúten e lactose.",
+    "Emagreça até 9kg em 21 dias comendo tudo que gosta com +150 receitas fitness sem açúcar, glúten e lactose.",
   generator: "v0.dev",
 }
 
