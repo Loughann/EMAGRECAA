@@ -188,7 +188,7 @@ export default function LandingPage() {
               rel="noopener noreferrer"
             >
               <Button className="bg-[#27AE60] hover:bg-[#219653] text-white font-bold text-lg py-6 rounded-full px-10 max-w-full animate-pulse-custom">
-                Quero emagrecer comendo o que eu gosto!
+                EMAGRECER COMENDO O QUE EU GOSTO!
               </Button>
             </a>
           </motion.div>
@@ -353,7 +353,7 @@ export default function LandingPage() {
                 rel="noopener noreferrer"
               >
                 <Button className="bg-[#27AE60] hover:bg-[#219653] text-white font-bold text-lg py-6 rounded-full px-10 max-w-full animate-pulse-custom">
-                  Quero esses resultados AGORA!
+                  TER ESSES RESULTADOS AGORA!
                 </Button>
               </a>
             </motion.div>
