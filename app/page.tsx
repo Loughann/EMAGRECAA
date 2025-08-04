@@ -188,7 +188,7 @@ export default function LandingPage() {
               rel="noopener noreferrer"
             >
               <Button className="bg-[#27AE60] hover:bg-[#219653] text-white font-bold text-lg py-6 rounded-full px-10 max-w-full animate-pulse-custom">
-                EMAGRECER COMENDO O QUE EU GOSTO!
+                ESTOU CANSADA DE DIETAS!
               </Button>
             </a>
           </motion.div>
@@ -500,9 +500,9 @@ export default function LandingPage() {
           <motion.div className="text-center mb-6" variants={itemVariants}>
             <p className="text-[#777777] line-through mb-1">R$ 59,90</p>
             <motion.p className="text-[#FF9D00] text-5xl font-bold mb-1 animate-pulse-custom" variants={itemVariants}>
-              R$12,90
+              R$19,90
             </motion.p>
-            <p className="text-[#555555]">ou 2x de R$6,79</p>
+            <p className="text-[#555555]">ou 3x de R$6,63</p>
           </motion.div>
 
           <motion.div className="space-y-3 mb-8" variants={itemVariants}>
