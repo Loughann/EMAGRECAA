@@ -64,7 +64,7 @@ export default function LandingPage() {
           variants={containerVariants}
         >
           <motion.h1 className="text-[#333333] text-3xl font-bold mb-2" variants={itemVariants}>
-            Emagreça até <span className="text-[#FF9D00] block text-4xl font-extrabold my-1">7KG EM 21 DIAS</span>
+            Emagreça até <span className="text-[#FF9D00] block text-4xl font-extrabold my-1">9KG EM 21 DIAS</span>
             comendo tudo que gosta!
           </motion.h1>
           <div className="h-[3px] w-32 bg-[#FF9D00] mx-auto mt-2 mb-4"></div>
@@ -119,7 +119,7 @@ export default function LandingPage() {
               rel="noopener noreferrer"
             >
               <Button className="bg-[#27AE60] hover:bg-[#219653] text-white font-bold text-lg py-6 rounded-full px-10 max-w-full animate-pulse-custom">
-                Eu Quero Emagrecer Agora!
+                QUERO EMAGRECER 9KG AGORA!
               </Button>
             </a>
           </motion.div>
@@ -188,7 +188,7 @@ export default function LandingPage() {
               rel="noopener noreferrer"
             >
               <Button className="bg-[#27AE60] hover:bg-[#219653] text-white font-bold text-lg py-6 rounded-full px-10 max-w-full animate-pulse-custom">
-                Transforme sua relação com a comida!
+                Quero emagrecer comendo o que eu gosto!
               </Button>
             </a>
           </motion.div>
@@ -353,7 +353,7 @@ export default function LandingPage() {
                 rel="noopener noreferrer"
               >
                 <Button className="bg-[#27AE60] hover:bg-[#219653] text-white font-bold text-lg py-6 rounded-full px-10 max-w-full animate-pulse-custom">
-                  Quero ter esses resultados 😍
+                  Quero esses resultados AGORA!
                 </Button>
               </a>
             </motion.div>
@@ -535,7 +535,7 @@ export default function LandingPage() {
               rel="noopener noreferrer"
             >
               <Button className="bg-[#27AE60] hover:bg-[#219653] text-white font-bold text-lg py-6 rounded-full px-10 max-w-full animate-pulse-custom">
-                Quero comprar agora!
+                GARANTIR AGORA!
               </Button>
             </a>
           </motion.div>
