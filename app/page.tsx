@@ -500,9 +500,9 @@ export default function LandingPage() {
           <motion.div className="text-center mb-6" variants={itemVariants}>
             <p className="text-[#777777] line-through mb-1">R$ 59,90</p>
             <motion.p className="text-[#FF9D00] text-5xl font-bold mb-1 animate-pulse-custom" variants={itemVariants}>
-              R$19,90
+              R$10,00
             </motion.p>
-            <p className="text-[#555555]">ou 3x de R$6,63</p>
+            <p className="text-[#555555]">ou 2x de R$5,00</p>
           </motion.div>
 
           <motion.div className="space-y-3 mb-8" variants={itemVariants}>
